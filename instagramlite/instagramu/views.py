@@ -1,4 +1,16 @@
 
+from django.shortcuts import render,redirect,get_object_or_404
+from django.http  import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from .email import send_welcome_email
+from .models import *
+from .forms import *
+from django.contrib.auth.models import User
+from django.urls import reverse
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
 @login_required
@@ -31,6 +43,7 @@ def user_profile(request,profile_id):
 
     return render(request,"profile/profile.html",{"profile":profile,"Images":Images})
 
+
 @login_required
 def add_user_profile(request):
     current_user = request.user
@@ -47,6 +60,55 @@ def add_user_profile(request):
     return render(request, 'profile/new_user_profile.html', {"form": form})
 
 
+@login_required
+def search_results(request):
+    current_user = request.user
+    profile = Profile.get_profile()
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_name = Profile.find_profile(search_term)
+        message = search_term
+
+        return render(request,'insta/search.html',{"message":message,"profiles":profile,"user":current_user,"username":searched_name})
+    else:
+        message = "You haven't searched for any username"
+        return render(request,'insta/search.html',{"message":message})
+
+
+@login_required
+def user_comments(request,pk):
+    image = get_object_or_404(Image, pk=pk)
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.image = image
+            comment.poster = current_user
+            comment.save()
+            return redirect('homepage')
+    else:
+        form = CommentForm()
+        return render(request,{"user":current_user,"comment_form":form})
+
+def follow(request,operation,id):
+    current_user=User.objects.get(id=id)
+    if operation=='follow':
+        Follow.follow(request.user,current_user)
+        return redirect('homepage')
+    elif operation=='unfollow':
+        Follow.unfollow(request.user,current_user)
+        return redirect('homepage')
+        
+def like(request,operation,pk):
+    image = get_object_or_404(Image,pk=pk)
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation =='unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('homepage')
 
 @login_required  
 def upload_image(request):
