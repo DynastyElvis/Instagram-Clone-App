@@ -20,4 +20,26 @@ def register(request):
          form = UserRegisterForm()
     return render (request,'users/register.html',{'form':form})
 
+def login_users(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+         login(request, user)
+         return redirect('homepage')
+        
+        else:
+            messages.success(request,('Invalid information'))
+            return redirect('login')
+         
+    else:
+
+     return render(request,'users/login.html')
+
+
+@login_required
+def logout_users(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("login"))
 
