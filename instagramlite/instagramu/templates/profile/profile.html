@@ -1,0 +1,86 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<hr>
+<div class="container top">
+  <h3 class="">{{ profile.user }} Profile Info</h3>
+  <hr>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+          {% if profile.photo %}
+            <img src="{{profile.photo.url}}" alt="profile-photo" class="img-fluid rounded-circle" style="border-radius: 50%;height:px; box-shadow: 5px 5px 10px rgba(3,3,3,0.7);">
+          {% endif %}
+         </div>
+         <div class="col-5 text-left" style="margin-left:5%;">
+          <br><br>
+          <ul class="list-inline">
+              <li class="list-inline-item">
+                <h3> <span class="username">{{ profile.user }}</span></h3>
+              </li> 
+              <hr>
+              
+              {% if profile.user == user %}
+              <li class="list-inline-item">
+                <a data-toggle="modal" data-target="#edit" style="text-decoration:none;"  href=""><i class="far fa-edit"></i>Edit Profile</a>
+              </li>
+              {% else %}
+              <li class="list-inline-item">
+                <a href="#" class="btn btn-primary">Follow</a>
+              </li>
+              {% endif %}
+          </ul>
+
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{Images|length}}</span> Post
+            </li>
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{profile.user.follow.all | length}}</span> Followers
+            </li>
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{profile.user.c_user.all | length}}</span> Following
+            </li>
+          </ul>
+          {% if profile.user == user %}
+          <p><a style="text-decoration:none;" href="{% url 'upload_image' %}">Upload Profile Photo</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <div class="container">
+    <div class="row">
+       <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+      {% for image in Images %}
+      <div class="col-md-4">
+        <img src="{{image.image.url}}" alt="Image" style="height:500px; border-radius:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);"class="img-fluid"><br>
+      </div>      
+      {% empty %}
+      <div class="col-md-12">
+        <h2>  Profile has no uploaded Posts </h2>
+      </div> 
+      {% endfor %} 
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <ul class="list-group">
+           <li class="list-group-item text-center"><a style="text-decoration:none;" href="{% url 'add_profile' %}">Edit Profile</a></li> 
+          <li class="list-group-item text-center"><a style="text-decoration:none;" href="/logout/">Log Out</a></li>
+          <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}

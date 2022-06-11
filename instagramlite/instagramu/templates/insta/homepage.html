@@ -1,0 +1,119 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<hr class="text-dark">
+<div class="container">
+      {%if messages%}
+        {%for message in messages%}   
+                <div class="alert-{{message.tags}}">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+               </div>
+          {%endfor%}
+      {%endif%}
+  <div class="row">
+    <div class="col-1">
+      <br>
+    </div>
+    <div class="col-8" style="max-width:43rem; margin-top:10px;">
+      {% for image in Images %}
+      <div class="card mr-0" style="max-width:39rem;">
+        <div class="card-header" style="display: flex;">
+           <img class="img-fluid rounded-circle" src="{{image.profile.photo.url}}" style="height:55px;margin-top:5px;margin-bottom:5px;">
+              <a href="/profile/{{user.id}}" style="color: black; text-decoration: none;">
+                        <h5 class="card-title" style="padding-top: 15px; margin-left:13px;">{{image.profile.user}} </h5>
+                    </a>
+                 
+        </div>
+        <img src="{{image.image.url}}" class="card-img-top" data-target="#extraModal{{image.id}}" data-toggle="modal">
+        <hr>
+        <div class="card-body">
+          <div class="">
+            <a href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart fa-lg" style="margin-right:10px;color:red;"></i></a>
+            <a href="#comment" style="color:black;"><i class="far fa-comment fa-lg"></i></a>
+            <a href="/upload"><i class="fas fa-upload fa-lg" style="margin-right:15px;color:black;"></i></a>
+            <img src="https://img.icons8.com/ios/72/bookmark-ribbon--v1.png" style="height:28px; width:40px; float:right;"class="card-img-top">
+          </div>
+          <div class="like-section">
+            {% if image.likes >= 1 %}
+            <label>{{image.likes}} Likes</label>
+            {% endif %}
+            {% for comment in comments %}
+              {% if image.id == comment.image.id %}
+              <p><b>{{comment.poster}}</b>  {{comment.comment}}</p> 
+              {% endif %}
+            {%endfor%} 
+            <h6 class="text-muted fw-light">{{image.posted|timesince}}  Ago</h6>
+            <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data" id="comment">
+              {%csrf_token%}
+              {% bootstrap_form form%}
+            </form>  
+          </div>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
+    <div class="col-2" style="max-width:22rem; margin-top:2%;">
+      <div class="" style="position:fixed; width:290px"> 
+          <hr>
+          <div style="">
+            {% for profile in profile %}
+              {% if profile.user == user %}
+               <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:80px;width:70px; border-radius:50%; float:left; margin-right:10px;  box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
+                <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;">{{profile.user}}</a></h2>
+                 <br>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <br>
+          <br>
+           <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-block mb-4 mx-auto"><i class="fas fa-upload fa-lg"></i> Profile</a> 
+          <div class="all" style="overflow-y:auto; height:400px;margin-top:2px;padding:10px; border-top: 2px solid ; border-bottom: 2px solid; width:100%">
+            <p class="text-muted">Suggestions For You</p>
+            {% for profile in profile %}
+             {% if profile.user != user %}
+            <div>
+              <img src="{{profile.photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; border-color: red; float:left; margin-right:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
+              <a style="text-decoration:none;" href="{% url 'images' pk=profile.pk %}">
+                <h6 style="font-size:16px">{{profile.user}} <br>
+                  <a href="/follow/follow/{{profile.user.id}}/" class="btn  bt-sm">{{follow}}Follow</a>
+                  <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-sm text-danger">{{unfollow}}Unfollow</a></h6>
+            </div>
+             {% endif %}
+            <hr>
+            {% endfor %}
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+ {% for image in Images %}
+<!-- Modal -->
+<div class="modal fade" id="extraModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="extraModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="exampleModalLongTitle"> Posted On:  {{image.posted|date:"D, d M Y" }}</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body">
+        <img class="card-img-top" class="img-responsive" src="{{image.image.url}}" data-target="#extraModal{{image.id}}" data-toggle="modal" size="80px200">
+        <br>
+        <hr>
+        <h6><b> Caption:</b> {{image.caption}}</h6>
+        <label><b> {{image.likes}} </b>Likes</label>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+{% endblock %}

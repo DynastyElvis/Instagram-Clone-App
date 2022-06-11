@@ -1,0 +1,60 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<hr>
+<div class="container top">
+  <h3 class="">{{ profile.user }} Profile Info</h3>
+  <hr>
+   <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          {% if profile.photo %}
+            <img src="{{profile.photo.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:300px;width: 250px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
+          {% endif %}
+        </div>
+        <div class="col-md-4 text-left">
+          <br><br>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+               <h3> <span class="username">{{ profile.user }}</span></h3>
+            </li> 
+            <hr>
+            <br>
+          </ul>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{Images|length}}</span> Post
+            </li>
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{profile.user.follow.all | length}}</span> Followers
+            </li>
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{profile.user.c_user.all | length}}</span> Following
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<hr>
+ <div class="container">
+    <div class="row">
+       <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+      {% for image in Images %}
+      <div class="col-md-4">
+        <img src="{{image.image.url}}" alt="Image" style="height:520px;width:350px; border-radius:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);"><br>
+      </div>      
+      {% empty %}
+      <div class="col-md-12">
+        <h2>  Profile has no uploaded Posts </h2>
+      </div> 
+      {% endfor %} 
+    </div>
+  </div>
+</div>
+{% endblock %}

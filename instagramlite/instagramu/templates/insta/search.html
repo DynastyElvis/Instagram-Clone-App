@@ -1,0 +1,33 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<hr>
+<div class="container">
+    <div class="row">
+        {% if username %}
+        <h3 class="text-center">Found {{username | length}} user by the name <b>{{message | title}}</b>.</h3>
+        <hr>
+        {% else %}
+        <h2 class="text-center">Found 0 users for the searched name {{message | title}}</h2>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% if username %}
+        {% for user in username %}
+        <div class="shadow p-3 mb-4 bg-body rounded-top border-top border-2 border-secondary" style="border-radius:10px;">
+            
+            <h1 class="text-center">  {{user.user}}</h1>
+            <hr>  
+            <img class="card-img-top" class="img-responsive" src="{{user.photo.url}}" style="border-radius:15px; box-shadow: 2px 2px 5px rgba(5,5,10,0.5);">
+            {% comment %} {% if user.image %}   
+            
+            {% endif %} {% endcomment %}
+         </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<br>
+<hr>
+{% endblock %}

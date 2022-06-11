@@ -1,0 +1,74 @@
+{% load bootstrap4 %}
+{% load static%}
+<nav class="navbar navbar-expand-lg navbar-light" style="padding-top: 0; padding-bottom:0; background:#FAFAFA;">
+    <div class="container">
+        <a class="smooth-scroll nav-link col-3 mr-1" href="/homepage" style="font-size: 35px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/130px-Instagram_logo.svg.png" id="logo-name" class="img-fluid pl-3"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4 mx-auto">
+                        <form class="form-inline mx-auto my-lg-0" role="search" style="background-color: #EBEBEB"  action="{% url 'search_results' %}" method="get">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control" role="search" placeholder="Search" aria-label="Search" name="username">
+                                </div>
+                            </form> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="{% url "homepage"%}" data-toggle="tooltip" data-placement="bottom" title="Home">
+                            <i class="fa-brands fa-instagram fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="{% url 'upload_image'%}" data-toggle="tooltip" data-placement="bottom" title="Upload Photo">
+                            <i class="fas fa-cloud-upload-alt fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="#" data-toggle="tooltip" data-placement="bottom" title="Discover People">
+                            <i class="far fa-heart fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="/profile/{{user.id}}" data-toggle="tooltip" data-placement="bottom" title="Profile">
+                            <i class="far fa-user-circle show fa-lg"></i>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" data-toggle="modal" data-target="#settings" data-toggle="tooltip" data-placement="bottom" title="Settings">
+                            <i class="fas fa-th fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="/logout/" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                        <i class="fas fa-sign-out-alt fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <ul class="list-group">
+                <li class="list-group-item text-center"><a style="text-decoration:none;" href="#">Change Password</a></i></li>
+                <li class="list-group-item text-center"><a style="text-decoration:none;" href="/logout/">Log Out</a></li>
+                <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
