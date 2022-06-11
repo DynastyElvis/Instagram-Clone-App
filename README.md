@@ -11,7 +11,7 @@ GITHUB - [ELVIS](https://github.com/DynastyElvis)
   
  
 ##  Live Link  
- Click [View Site](https://elv)  to visit the site
+ Click [View Site](https://elvis-instagram-clone.herokuapp.com/)  to visit the site
 
 
 [Go Back to the top](#Instagram-Clone)
