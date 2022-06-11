@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-_rqbz!j_vd9y32)gd4oe62yv1$ktvs1gywvpr^(mjc_8@n2$7#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -161,3 +161,5 @@ ACCOUNT_ACTIVATION_DAYS = 5
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_on_heroku.settings(locals())
