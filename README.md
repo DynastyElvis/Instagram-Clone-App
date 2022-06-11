@@ -20,13 +20,13 @@ GITHUB - [ELVIS](https://github.com/DynastyElvis)
 ## Screenshots 
 ###### Home Landing-Page
  
-<img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-24.png">
+<img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-17-51.png">
  
  ###### User Post Form Page
- <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-59.png"> 
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-18-01.png"> 
 
  ###### ADMIN Dashboard to manage the pictures
- <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-47.png">
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-18-25.png">
 
 [Go Back to the top](#Instagram-Clone)
 
@@ -42,6 +42,8 @@ Users would like to:
 * Like Images.
 
 
+[Go Back to the top](#Instagram-Clone)
+
 ## Admin Abilities
 These are the behaviours/features that the application implements for use by the admin.
 
@@ -50,6 +52,8 @@ Admin should:
 * Add, Edit and Delete images
 * Delete images
 * Manage the application.
+
+[Go Back to the top](#Instagram-Clone)
 
 
 ## Specifications
@@ -64,6 +68,8 @@ Admin should:
 | Like images | **Add likes to an image** | Users can add likes to images they like|
 
 
+[Go Back to the top](#Instagram-Clone)
+
 
 ## SetUp / Installation Requirements
 ### Prerequisites
@@ -77,6 +83,9 @@ Admin should:
 
         $ git clone https://github.com/DynastyElvis/Instagram-Clone-App
         $ cd LITE
+
+[Go Back to the top](#Instagram-Clone)
+
 
 ## Running the Application
 * Creating the virtual environment
@@ -93,15 +102,49 @@ Admin should:
 
         $ python3.9 manage.py runserver
 
+
+[Go Back to the top](#Instagram-Clone)
+
+
 ## Testing the Application
 * To run the tests for the class files:
 
         $ python3.9 manage.py test 
 
-## Technologies Used
-* Python3.9
-* Django  framework and postgresql database
+[Go Back to the top](#Instagram-Clone)
+
+
+## Technology used  
+  
+* [Python3.8](https://www.python.org/)  
+* [Django ](https://docs.djangoproject.com/en/2.2/)  
+* [Heroku](https://heroku.com)  
+* [HTML](https://www.w3schools.com/css/)  
+* [Boostrap](https://getbootstrap.com/)  
+* [CSS](https://www.w3schools.com/css/) 
+
+
+[Go Back to the top](#Instagram-Clone)
+
+
+## License
+
+[MIT LICENCE](https://github.com/DynastyElvis/Instagram-Clone/blob/main/LICENSE)
+
+
+Copyright (c) 2022 K. E. Rono
+
+
+
+[Go Back to the top](#Instagram-Clone)
 
 ## Known Bugs
-No bugs at the moment.            
 
+No Known Bugs.
+
+## Support and contact details
+ Incase you come across errors, have questions, ideas ,concerns, or want to contribute to the application, feel free to reach me at 
+Email Address - [Kipkemoilvs@gmail.com](Kipkemoilvs@gmail.com)
+
+
+[Go Back to the top](#Instagram-Clone)
