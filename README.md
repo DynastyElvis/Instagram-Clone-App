@@ -1,3 +1,34 @@
+# Instagram-Clone
+A clone of Instagram that resembles the functionalities of Instagram. View, like, post, comment, dm etc
+
+## Author  
+  
+LinkedIn - [KIPKEMOI ELVIS RONO](https://www.linkedin.com/in/elvis-rono-aa3548209/)
+
+
+GITHUB - [ELVIS](https://github.com/DynastyElvis)
+
+  
+ 
+##  Live Link  
+ Click [View Site](https://elv)  to visit the site
+
+
+[Go Back to the top](#Instagram-Clone)
+
+  
+## Screenshots 
+###### Home Landing-Page
+ 
+<img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-24.png">
+ 
+ ###### User Post Form Page
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-59.png"> 
+
+ ###### ADMIN Dashboard to manage the pictures
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone/main/insta/static/images/Screenshot%20from%202022-06-04%2010-17-47.png">
+
+[Go Back to the top](#Instagram-Clone)
 
 ## User Stories
 These are the behaviours/features that the application implements for use by a user.

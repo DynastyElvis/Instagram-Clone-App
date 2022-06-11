@@ -1,3 +1,19 @@
+/* @media (min-width: 576px) {
+    .modal-dialog {
+        max-width: none;
+    }
+}
+
+.modal-dialog {
+    width: 60%;
+    height: 60%;
+}
+
+.modal-body {
+    height: auto;
+    min-height: 100%;
+} */
+
 .card-header {
     background-color: white;
 }
