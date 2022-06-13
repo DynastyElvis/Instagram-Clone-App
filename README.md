@@ -20,13 +20,13 @@ GITHUB - [ELVIS](https://github.com/DynastyElvis)
 ## Screenshots 
 ###### Home Landing-Page
  
-<img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-17-51.png">
+<img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/media/image/Screenshot%20from%202022-06-11%2023-17-51.png">
  
  ###### User Post Form Page
- <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-18-01.png"> 
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/media/image/Screenshot%20from%202022-06-11%2023-18-01.png"> 
 
  ###### ADMIN Dashboard to manage the pictures
- <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/instagramlite/media/image/Screenshot%20from%202022-06-11%2023-18-25.png">
+ <img src="https://raw.githubusercontent.com/DynastyElvis/Instagram-Clone-App/master/media/image/Screenshot%20from%202022-06-11%2023-18-25.png">
 
 [Go Back to the top](#Instagram-Clone)
 
